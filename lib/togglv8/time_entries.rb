@@ -54,8 +54,9 @@ module TogglV8
     end
 
     def update_time_entry(time_entry_id, params)
-    if  !params.has_key?('start') !params.has_key?('pid') !params.has_key?('stop') then
-    raise ArgumentError, "one of params['wid'], params['pid'], params['tid'] is required"
+    requireParams(params, ['start', 'stop'])
+    if  !params.has_key?('start')  and !params.has_key?('stop') then
+        raise ArgumentError, "one of params['wid'], params['pid'], params['tid'] is required"
     end
       put "time_entries/#{time_entry_id}", { 'time_entry' => params }
     end
