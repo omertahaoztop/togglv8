@@ -53,8 +53,8 @@ module TogglV8
       get "time_entries/current"
     end
 
-    def update_time_entry(time_entry_id, params)
-      put "time_entries/#{time_entry_id}", { 'time_entry' => params }
+    def update_time_entry(workspace_id,time_entry_id, params)
+      put "workspaces/{workspace_id}/time_entries/#{time_entry_id}", { 'time_entry' => params }
     end
 
     def delete_time_entry(time_entry_id)
