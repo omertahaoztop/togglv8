@@ -53,8 +53,11 @@ module TogglV8
       get "time_entries/current"
     end
 
-    def update_time_entry(workspace_id,time_entry_id, params)
-      put "workspaces/{workspace_id}/time_entries/#{time_entry_id}", { 'time_entry' => params }
+    def update_time_entry(time_entry_id, params)
+    if  !params.has_key?('start') !params.has_key?('pid') !params.has_key?('stop') then
+    raise ArgumentError, "one of params['wid'], params['pid'], params['tid'] is required"
+    end
+      put "time_entries/#{time_entry_id}", { 'time_entry' => params }
     end
 
     def delete_time_entry(time_entry_id)
