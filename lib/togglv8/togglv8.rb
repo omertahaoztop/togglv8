@@ -15,7 +15,7 @@ module TogglV8
   class API
     include TogglV8::Connection
 
-    TOGGL_API_V8_URL = TOGGL_API_URL + 'v8/'
+    TOGGL_API_V8_URL = TOGGL_API_URL + 'v9/'
 
     attr_reader :conn
 
